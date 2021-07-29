@@ -79,7 +79,7 @@ function PR_ERROR() {
 }
 
 # The arrow symbol that is used in the prompt
-PR_ARROW_CHAR=">"
+PR_ARROW_CHAR=">>"
 
 # The arrow in red (for root) or violet (for regular user)
 function PR_ARROW() {
