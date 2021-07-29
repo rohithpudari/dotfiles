@@ -11,12 +11,12 @@ alias l='ls'
 alias cp='cp -i'
 alias mv='mv -i'
 
-#git aliases
-alias ga='git add -A'
-alias gc='git commit -m'
-
 # git related aliases
 alias gag='git exec ag'
+alias gs='git status'
+alias ga='git add -A'
+alias gc='git commit -m'
+alias gl='git log --all --graph --decorate'
 
 # Update dotfiles
 dfu() {
