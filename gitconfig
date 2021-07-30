@@ -58,7 +58,7 @@
 	zip = ! "zip() { git archive --format zip --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; zip"
 
 [init]
-	defaultBranch = master
+	defaultBranch = main
 
 [diff]
 	mnemonicPrefix = true
@@ -119,3 +119,5 @@
 	path = ~/.gitconfig_local
 [commit]
 	gpgsign = true
+[gpg]
+	program = gpg
