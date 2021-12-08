@@ -35,7 +35,6 @@
   - git update-submodules
   - >
     git cleanall -f
-    irssi/scripts/vendor/
     jupyter/nbextensions/
     shell/plugins/
     vim/pack/vendor/start/
