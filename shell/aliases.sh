@@ -5,7 +5,7 @@ alias grep='grep --color'
 # ls aliases
 alias ll='ls -lah'
 alias la='ls -A'
-alias l='ls'
+alias l='ls --color=auto'
 
 # Aliases to protect against overwriting
 alias cp='cp -i'
@@ -13,10 +13,6 @@ alias mv='mv -i'
 
 # git related aliases
 alias gag='git exec ag'
-alias gst='git status'
-alias ga='git add -A'
-alias gc='git commit -m'
-alias gl='git log --all --graph --decorate'
 
 # Update dotfiles
 dfu() {

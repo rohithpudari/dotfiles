@@ -23,6 +23,7 @@
     ~/.pythonrc:
     ~/.screenrc:
     ~/.shell:
+    ~/.tmux.conf:
     ~/.vim:
     ~/.vimrc:
     ~/.zsh:
