@@ -7,9 +7,9 @@
 	bra = branch -vv --all
 	bed = branch --edit-description
 	aa = add --all :/
-	ci = commit -v
+	ci = commit -v -m
 	ca = commit --amend -v
-	save = commit -a -m
+	save = commit -a -m "Save"
 	co = checkout
 	di = diff
 	dis = diff --stat
