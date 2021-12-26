@@ -150,3 +150,10 @@ alias gm='git merge'
 alias gcm='git co main'
 alias gs='git st'
 alias gc='git ci'
+
+# venv aliases
+env_vac() {
+    python3 -m venv venv && source venv/bin/activate
+}
+
+alias vac='source venv/bin/activate'
