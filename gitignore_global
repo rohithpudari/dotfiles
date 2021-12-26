@@ -17,6 +17,10 @@
 \.#*
 .ipynb_checkpoints/
 
+# project-specific vim configurations
+.vimrc.local
+.vim/coc-settings.json
+
 # Logs and databases #
 ######################
 *.log

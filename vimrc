@@ -43,6 +43,7 @@ set autoindent
 " Basic editing config
 "---------------------
 set shortmess+=I " disable startup message
+set autoread " auto reload when file is changed outside vim
 set nu " number lines
 set rnu " relative line numbering
 set incsearch " incremental search (as string is being typed)
@@ -84,10 +85,14 @@ set nofoldenable " disable folding by default
 " unbind keys
 map <C-a> <Nop>
 map <C-x> <Nop>
-nmap Q <Nop>
+nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 
 " disable audible bell
 set noerrorbells visualbell t_vb=
+
+" change cursor from block to line during insert mode
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[1 q"
 
 " open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -224,3 +229,22 @@ let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
     source $LOCALFILE
 endif
+
+"---------------------
+" Enforce using hjkl
+"--------------------
+"Try to prevent bad habits like using the arrow keys for movement. This is
+" not the only possible bad habit. For example, holding down the h/j/k/l keys
+" for movement, rather than using more efficient movement commands, is also a
+" bad habit. The former is enforceable through a .vimrc, while we don't know
+" how to prevent the latter.
+" Do this in normal mode...
+nnoremap <Left>  :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up>    :echoe "Use k"<CR>
+nnoremap <Down>  :echoe "Use j"<CR>
+" ...and in insert mode
+inoremap <Left>  <ESC>:echoe "Use h"<CR>
+inoremap <Right> <ESC>:echoe "Use l"<CR>
+inoremap <Up>    <ESC>:echoe "Use k"<CR>
+inoremap <Down>  <ESC>:echoe "Use j"<CR>

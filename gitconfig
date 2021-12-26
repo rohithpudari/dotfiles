@@ -8,7 +8,7 @@
 	bed = branch --edit-description
 	aa = add --all :/
 	ci = commit -v -m
-	ca = commit --amend -v
+	ca = commit --amend -v -m # ammend commit with message
 	save = commit -a -m "Save"
 	co = checkout
 	di = diff
@@ -56,7 +56,7 @@
 	tar = ! "tar() { git archive --format tar --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; tar"
 	targz = ! "targz() { git archive --format tar.gz --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; targz"
 	zip = ! "zip() { git archive --format zip --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; zip"
-
+	fuckedup = ! "fup() { git reset --hard && git clean -df;}; fup"
 [init]
 	defaultBranch = main
 
@@ -99,7 +99,8 @@
 
 [grep]
 	lineNumber = true
-
+	extendRegexp = true
+	
 [advice]
 	detachedHead = false
 	waitingForEditor = false

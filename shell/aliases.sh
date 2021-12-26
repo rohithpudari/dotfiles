@@ -134,3 +134,18 @@ alias mirrorsite='wget -m -k -K -E -e robots=off'
 
 # Mirror stdout to stderr, useful for seeing data going through a pipe
 alias peek='tee >(cat 1>&2)'
+
+# brew alias
+alias bubo='brew update && brew outdated'
+alias bubc='brew upgrade && brew cleanup'
+alias bubu='bubo && bubc'
+
+# git alias
+alias g='git'
+alias ga='git aa'
+alias gp='git push'
+alias gl='git pull'
+alias gm='git merge'
+alias gcm='git co main'
+alias gs='git st'
+alias gc='git ci'
