@@ -138,7 +138,8 @@ alias peek='tee >(cat 1>&2)'
 # brew alias
 alias bubo='brew update && brew outdated'
 alias bubc='brew upgrade && brew cleanup'
-alias bubu='bubo && bubc'
+alias bubu='brew update && brew upgrade'
+alias brewfile='brew bundle dump --force'
 
 # git alias
 alias g='git'
