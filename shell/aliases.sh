@@ -143,13 +143,13 @@ alias brewfile='brew bundle dump --force'
 
 # git alias
 alias g='git'
-alias ga='git aa'
+alias ga='git add --all :/'
 alias gp='git push'
 alias gl='git pull'
 alias gm='git merge'
-alias gcm='git co main'
-alias gs='git st'
-alias gc='git ci'
+alias gcm='git checkout main'
+alias gs='git status -sb'
+alias gc='git commit -v -m'
 
 # venv aliases
 env_vac() {
