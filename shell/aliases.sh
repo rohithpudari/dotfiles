@@ -143,7 +143,6 @@ alias brewfile='brew bundle dump --force'
 
 # git alias
 alias g='git'
-alias ga='git add --all :/'
 alias gp='git push'
 alias gl='git pull'
 alias gm='git merge'

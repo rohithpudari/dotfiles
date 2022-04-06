@@ -1,5 +1,5 @@
 [alias]
-	dropbox = ! "git-dropbox-manage"
+	# dropbox = ! "git-dropbox-manage" # dropbox and git bridge
 	exec = ! "exec"
 	st = status -sb
 	versions = tag -l --sort=version:refname
@@ -7,6 +7,7 @@
 	bra = branch -vv --all
 	bed = branch --edit-description
 	aa = add --all :/
+	coa = ! "coa() { git add --all :/ && git commit -m \"$1\"; }; coa"
 	ci = commit -v -m
 	ca = commit --amend -v -m # ammend commit with message
 	save = commit -a -m "Save"
