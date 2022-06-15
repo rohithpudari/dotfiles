@@ -5,7 +5,6 @@
 	br = branch -vv
 	bra = branch -vv --all
 	bed = branch --edit-description
-	aa = add --all :/
     au = add --update :/
 	coa = ! "coa() { git add --all :/ && git commit -m \"$1\"; }; coa"
 	ci = commit -v -m

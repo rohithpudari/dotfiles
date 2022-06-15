@@ -149,6 +149,8 @@ alias gm='git merge'
 alias gcm='git checkout main'
 alias gs='git status -sb'
 alias gc='git commit -v -m'
+alias ga='git add'
+alias gaa='git add -A'
 
 # venv aliases
 env_vac() {
