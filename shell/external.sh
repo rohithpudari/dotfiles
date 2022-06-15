@@ -8,7 +8,10 @@ export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 export PYTHONSTARTUP=$HOME/.pythonrc
 
 # Vagrant
-VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
+export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
+
+# Docker
+export DOCKER_SCAN_SUGGEST=false
 
 # add gpg
 export GPG_TTY=$(tty)
