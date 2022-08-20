@@ -7,9 +7,21 @@ alias ll='ls -lah'
 alias la='ls -A'
 alias l='ls --color=auto'
 
-# Aliases to protect against overwriting
+# display the ten newest files
+alias lsnew="ls -rl *(D.om[1,10])"
+
+# display the ten oldest files
+alias lsold="ls -rtlh *(D.om[1,10])"
+
+# display the ten smallest files
+alias lssmall="ls -Srl *(.oL[1,10])"# Aliases to protect against overwriting
+
 alias cp='cp -i'
 alias mv='mv -i'
+alias rm='rm -i'
+
+# Open a Finder window in your current directory
+alias f='open -a Finder ./'
 
 # git related aliases
 alias gag='git exec ag'
