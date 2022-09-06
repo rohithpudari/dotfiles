@@ -104,3 +104,10 @@ _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+
+# obsidian
+# only to exclude workspace cache
+.obsidian/workspace
+
+# Add below lines to exclude OS settings and caches
+.trash/
