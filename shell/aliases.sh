@@ -171,3 +171,4 @@ env_vac() {
 }
 
 alias vac='source venv/bin/activate'
+alias dac='deactivate'
