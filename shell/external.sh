@@ -23,3 +23,6 @@ eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(pyenv init -)"
 
+# ruby env
+export PATH=$HOME/.rbenv/shims:$PATH
+eval "$(rbenv init - zsh)"
