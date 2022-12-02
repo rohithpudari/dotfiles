@@ -16,13 +16,3 @@ export DOCKER_SCAN_SUGGEST=false
 # add gpg
 export GPG_TTY=$(tty)
 
-# pyenv init
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
-eval "$(pyenv init -)"
-
-# ruby env
-export PATH=$HOME/.rbenv/shims:$PATH
-eval "$(rbenv init - zsh)"

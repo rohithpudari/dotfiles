@@ -2,10 +2,10 @@ path_remove() {
     PATH=$(echo -n "$PATH" | awk -v RS=: -v ORS=: "\$0 != \"$1\"" | sed 's/:$//')
 }
 
-path_append() {
-    path_remove "$1"
-    PATH="${PATH:+"$PATH:"}$1"
-}
+# path_append() {
+#     path_remove "$1"
+#     PATH="${PATH:+"$PATH:"}$1"
+# }
 
 path_prepend() {
     path_remove "$1"
@@ -27,4 +27,9 @@ there="$HOME/.shell.here"
 
 there() {
     cd "$(readlink "${there}")"
+}
+
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }

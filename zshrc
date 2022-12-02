@@ -1,3 +1,8 @@
+export EDITOR='vim'
+
+# zprof for profiling
+zmodload zsh/zprof
+
 # Functions
 source ~/.shell/functions.sh
 
@@ -46,6 +51,3 @@ fi
 if [ -f ~/.shell_private ]; then
     source ~/.shell_private
 fi
-
-export PATH=$HOME/.rbenv/shims:$PATH
-
