@@ -16,3 +16,8 @@ export DOCKER_SCAN_SUGGEST=false
 # add gpg
 export GPG_TTY=$(tty)
 
+#pyenv
+# pyenv
+export PATH="/Users/rohithpudari/.pyenv/shims:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+
