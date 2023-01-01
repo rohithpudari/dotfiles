@@ -156,8 +156,8 @@ alias brewfile='brew bundle dump --force'
 
 # git alias
 alias g='git'
-alias gp='git push'
-alias gl='git pull'
+alias gph='git push'
+alias gpl='git pull'
 alias gm='git merge'
 alias gcm='git checkout main'
 alias gs='git status -sb'
