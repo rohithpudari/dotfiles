@@ -1,5 +1,3 @@
-export EDITOR='vim'
-
 # zprof for profiling
 zmodload zsh/zprof
 
