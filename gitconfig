@@ -9,6 +9,7 @@
 	coa = ! "coa() { git add --all :/ && git commit -m \"$1\"; }; coa"
 	ci = commit -v -m
 	ca = commit --amend -v -m # ammend commit with message
+    phf = push --force
 	save = commit -a -m "Save"
 	co = checkout
 	di = diff
