@@ -148,6 +148,8 @@ alias mirrorsite='wget -m -k -K -E -e robots=off'
 # Mirror stdout to stderr, useful for seeing data going through a pipe
 alias peek='tee >(cat 1>&2)'
 
+alias code='code-insiders'
+
 # brew alias
 alias bubo='brew update && brew outdated'
 alias bubc='brew upgrade && brew cleanup'
