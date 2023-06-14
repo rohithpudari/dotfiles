@@ -7,17 +7,8 @@ export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 # Python startup file
 export PYTHONSTARTUP=$HOME/.pythonrc
 
-# Vagrant
-export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
-
 # Docker
 export DOCKER_SCAN_SUGGEST=false
 
 # add gpg
 export GPG_TTY=$(tty)
-
-#pyenv
-# pyenv
-export PATH="/Users/rohithpudari/.pyenv/shims:$PATH"
-export PYENV_ROOT="$HOME/.pyenv"
-

@@ -108,7 +108,8 @@
 
 [user]
 	useConfigOnly = true
-	signingkey = 8113D352B2327FF6
+	signingkey = 737FEA5001EDD514
+	email = 27728974+rohithpudari@users.noreply.github.com
 
 [http]
 	cookieFile = ~/.gitcookies

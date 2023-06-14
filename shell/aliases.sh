@@ -1,3 +1,5 @@
+# time_zsh load time
+alias time_zsh='time zsh -i -c exit'
 # Use colors in coreutils utilities output
 alias ls='ls --color=auto'
 alias grep='grep --color'
@@ -147,8 +149,6 @@ alias mirrorsite='wget -m -k -K -E -e robots=off'
 
 # Mirror stdout to stderr, useful for seeing data going through a pipe
 alias peek='tee >(cat 1>&2)'
-
-alias code='code-insiders'
 
 # brew alias
 alias bubo='brew update && brew outdated'
