@@ -5,7 +5,10 @@
 	br = branch -vv
 	bra = branch -vv --all
 	bed = branch --edit-description
+    brs = branch -a
     au = add --update :/
+    unstage = reset -q HEAD --
+    uncommit = reset --mixed HEAD~
 	coa = ! "coa() { git add --all :/ && git commit -m \"$1\"; }; coa"
 	ci = commit -v -m
 	ca = commit --amend -v -m # ammend commit with message
@@ -94,6 +97,7 @@
 
 [push]
 	default = upstream
+    autoSetupRemote = true
 
 [credential]
 	helper = cache --timeout=3600

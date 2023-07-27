@@ -4,6 +4,17 @@ alias time_zsh='time zsh -i -c exit'
 alias ls='ls --color=auto'
 alias grep='grep --color'
 
+# cd aliases
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# frequently used folders
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias onedrive="cd ~/OneDrive"
+
 # ls aliases
 alias ll='ls -lah'
 alias la='ls -A'
