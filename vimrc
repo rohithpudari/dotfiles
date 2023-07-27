@@ -134,6 +134,9 @@ nnoremap <C-n> :set rnu!<CR>
 " save read-only files
 command -nargs=0 Sudow w !sudo tee % >/dev/null
 
+" Leader
+let mapleader=" "       " leader is space
+
 "---------------------
 " Plugin configuration
 "---------------------
