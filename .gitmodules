@@ -6,10 +6,6 @@
 	path = vim/pack/vendor/start/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
 	ignore = untracked
-[submodule "vim/bundle/vim-scala"]
-	path = vim/pack/vendor/start/vim-scala
-	url = https://github.com/derekwyatt/vim-scala.git
-	ignore = untracked
 [submodule "vim/bundle/vim-markdown"]
 	path = vim/pack/vendor/start/vim-markdown
 	url = https://github.com/tpope/vim-markdown
@@ -78,10 +74,6 @@
 	path = vim/pack/vendor/start/vim-tmux
 	url = https://github.com/tmux-plugins/vim-tmux
 	ignore = untracked
-[submodule "vim/bundle/haskell-vim"]
-	path = vim/pack/vendor/start/haskell-vim
-	url = https://github.com/neovimhaskell/haskell-vim
-	ignore = untracked
 [submodule "vim/bundle/ack.vim"]
 	path = vim/pack/vendor/start/ack.vim
 	url = https://github.com/mileszs/ack.vim
@@ -149,10 +141,6 @@
 [submodule "vim/bundle/vim-smt2"]
 	path = vim/pack/vendor/start/vim-smt2
 	url = https://github.com/bohlender/vim-smt2
-	ignore = untracked
-[submodule "vim/bundle/vim-racket"]
-	path = vim/pack/vendor/start/vim-racket
-	url = https://github.com/wlangstroth/vim-racket
 	ignore = untracked
 [submodule "vim/pack/vendor/start/vim-jsx-pretty"]
 	path = vim/pack/vendor/start/vim-jsx-pretty
