@@ -87,6 +87,9 @@ map <C-a> <Nop>
 map <C-x> <Nop>
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 
+" reselect pasted text
+nnoremap gp `[v`]
+
 " disable audible bell
 set noerrorbells visualbell t_vb=
 
