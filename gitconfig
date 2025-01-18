@@ -112,7 +112,7 @@
 
 [user]
 	useConfigOnly = true
-	signingkey = 737FEA5001EDD514
+	signingkey = 0x6811B6CD9AFC722A
 	email = 27728974+rohithpudari@users.noreply.github.com
 
 [http]
@@ -131,8 +131,6 @@
 [commit]
 	gpgsign = true
 
-[gpg]
-	program = /usr/local/bin/gpg
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

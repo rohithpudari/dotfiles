@@ -13,13 +13,12 @@
     ~/.gitconfig:
     ~/.gitignore_global:
     ~/.inputrc:
-    ~/.gnupg/gpg.conf:
+    ~/.gnupg/dirmngr.conf: gnupg/dirmngr.conf
+    ~/.gnupg/gpg.conf: gnupg/gpg.conf
     ~/.pythonrc:
     ~/.screenrc:
     ~/.shell:
     ~/.tmux.conf:
-    ~/.vim:
-    ~/.vimrc:
     ~/.zsh:
     ~/.zshrc:
 
@@ -30,5 +29,4 @@
   - >
     git cleanall -f
     shell/plugins/
-    vim/pack/vendor/start/
     zsh/plugins/
