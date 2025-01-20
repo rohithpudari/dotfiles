@@ -37,6 +37,9 @@ alias rm='rm -i'
 # Open a Finder window in your current directory
 alias f='open -a Finder ./'
 
+# search for a file using fuzzy finder and open in neovim
+alias fo="fd --type f | fzf | sed 's/\ /\\\ /g' | xargs nvim"
+
 # git related aliases
 alias gag='git exec ag'
 
@@ -170,7 +173,7 @@ alias brewfile='brew bundle dump --force'
 # git alias
 alias g='git'
 alias gph='git push'
-alias gpl='git pull'
+alias gsgpl='git pull'
 alias gm='git merge'
 alias gcm='git checkout main'
 alias gs='git status -sb'
@@ -182,6 +185,5 @@ alias gaa='git add -A'
 env_vac() {
     python3 -m venv venv && source venv/bin/activate
 }
-
 alias vac='source venv/bin/activate'
 alias dac='deactivate'

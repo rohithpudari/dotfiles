@@ -2,11 +2,25 @@
 autoload -Uz compinit && compinit -i
 zstyle ':completion:*' menu select=4
 zmodload zsh/complist
+
+# auto-suggestions
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#b2b2b2,underline standout"
+
 # Use vim style navigation keys in menu completion
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"
+# Open in tmux popup if on tmux, otherwise use --height mode
+export FZF_DEFAULT_OPTS='--height 50% --tmux bottom,40% --layout reverse --border top'
+export FZF_CTRL_T_OPTS='--preview "bat --style=numbers --color=always --line-range :500 {}"'
+export FZF_ALT_C_COMMAND="fd --type f --hidden --follow --strip-cwd-prefix . $HOME"
 
 # Initialize editing command line
 autoload -U edit-command-line && zle -N edit-command-line
@@ -38,7 +52,7 @@ bindkey '^?' backward-delete-char
 bindkey '^H' backward-delete-char
 
 # Use incremental search
-bindkey "^R" history-incremental-search-backward
+# bindkey "^R" history-incremental-search-backward
 
 # Disable shell builtins
 disable r

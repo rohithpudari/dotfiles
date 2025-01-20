@@ -19,6 +19,7 @@
     ~/.screenrc:
     ~/.shell:
     ~/.tmux.conf:
+    ~/.config/nvim:
     ~/.zsh:
     ~/.zshrc:
 

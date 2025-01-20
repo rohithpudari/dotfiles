@@ -1,0 +1,5 @@
+{
+  "indent-blankline.nvim": { "branch": "master", "commit": "7a698a1d7ed755af9f5a88733b23ca246ce2df28" },
+  "lazy.nvim": { "branch": "main", "commit": "d8f26efd456190241afd1b0f5235fe6fdba13d4a" },
+  "nvim-treesitter": { "branch": "master", "commit": "87b1f250980d288f37bfacae8bcafc0d843c2751" }
+}
