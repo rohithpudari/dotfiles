@@ -39,6 +39,12 @@ setopt extendedhistory
 # Time to wait for additional characters in a sequence
 KEYTIMEOUT=1 # corresponds to 10ms
 
+# Use vim as the editor
+export EDITOR=vim
+
+# Use vim style line editing in zsh
+bindkey -v
+
 # Movement
 bindkey -a 'gg' beginning-of-buffer-or-history
 bindkey -a 'G' end-of-buffer-or-history

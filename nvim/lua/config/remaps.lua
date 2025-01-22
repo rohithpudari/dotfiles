@@ -17,6 +17,13 @@ vim.opt.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
+-- disable folding
+vim.opt.foldenable = false
+vim.opt.foldmethod = 'manual'
+
+-- turn off terminal beep
+vim.opt.vb = true
+
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -36,11 +43,11 @@ vim.opt.splitbelow = true
 -- infinite undo!
 -- NOTE: ends up in ~/.local/state/nvim/undo/
 vim.opt.undofile = true
--- tabs: go big or go home
-vim.opt.shiftwidth = 8
-vim.opt.softtabstop = 8
-vim.opt.tabstop = 8
-vim.opt.expandtab = false
+-- one tab = 4 spaces
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.tabstop = 4
+vim.opt.expandtab = true
 -- Case-insensitive searching, unless uppercase in search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -76,6 +83,10 @@ vim.opt.scrolloff = 8
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
+
+-- Jump to start and end of line using the home row keys
+vim.keymap.set('', 'H', '^')
+vim.keymap.set('', 'L', '$')
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
