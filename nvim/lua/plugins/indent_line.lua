@@ -6,4 +6,4 @@ return {
       main = 'ibl',
       opts = {},
     },
-  }
+}
