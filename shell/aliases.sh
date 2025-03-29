@@ -167,7 +167,7 @@ alias peek='tee >(cat 1>&2)'
 # brew alias
 alias bubo='brew update && brew outdated'
 alias bubc='brew upgrade && brew cleanup'
-alias bubu='brew update && brew upgrade'
+alias bu='brew update && brew outdated && brew upgrade && brew cleanup'
 alias brewfile='brew bundle dump --force'
 
 # git alias
@@ -182,8 +182,9 @@ alias ga='git add'
 alias gaa='git add -A'
 
 # venv aliases
-env_vac() {
-    python3 -m venv venv && source venv/bin/activate
-}
-alias vac='source venv/bin/activate'
-alias dac='deactivate'
+alias pyenvs='pyenv versions'
+alias pyvenv='pyenv virtualenv'
+alias pyvenvs='pyenv virtualenvs'
+alias pylocal='pyenv local'
+alias pyact='pyenv activate'
+alias pydeact='pyenv deactivate'

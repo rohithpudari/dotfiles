@@ -62,3 +62,6 @@ bindkey '^H' backward-delete-char
 
 # Disable shell builtins
 disable r
+
+# Zsh completion accept to tab
+bindkey '^I' autosuggest-accept
