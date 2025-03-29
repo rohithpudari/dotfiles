@@ -83,7 +83,7 @@ PR_ARROW_CHAR=">"
 
 # The arrow in red (for root) or violet (for regular user)
 function PR_ARROW() {
-    echo "%(!.%{$fg[red]%}.%{$fg[violet]%})${PR_ARROW_CHAR}%{$reset_color%}"
+    echo "%(!.%{$fg[red]%}.%{$fg[orange]%})${PR_ARROW_CHAR}%{$reset_color%}"
 }
 
 # Set custom rhs prompt
