@@ -70,7 +70,7 @@ function PR_DIR() {
         last=${last[2,-1]} # take substring
     fi
 
-    echo "%{$fg[green]%}${truncated}%{$fg[orange]%}%B${last}%b%{$reset_color%}"
+    echo "%{$fg[green]%}${truncated}%{$fg[cyan]%}${last}%{$reset_color%}"
 }
 
 # An exclamation point if the previous command did not complete successfully
