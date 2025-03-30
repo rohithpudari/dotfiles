@@ -1,4 +1,4 @@
-# Dotfiles [![CI](https://github.com/rohithpudari/dotfiles/actions/workflows/build.yml/badge.svg)](https://github.com/rohithpudari/dotfiles/actions/workflows/build.yml)
+# Dotfiles
 
 This dotfiles repo is heavily inspired by [Anishathyale dotfiles](https://github.com/anishathalye/dotfiles)
 
@@ -27,7 +27,7 @@ You can make local customizations for some programs by editing these files:
 License
 -------
 
-Copyright (c) 2013-2021 Rohith Pudari. Released under the MIT License. See
+Copyright (c) 2013-2021 Rohith Pudari. Released under the CC-1.0 License. See
 [LICENSE.md][license] for details.
 
 [dotfiles-local]: https://github.com/rohithpudari/dotfiles-local
