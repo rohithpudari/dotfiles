@@ -1,5 +1,7 @@
 # Dotfiles [![CI](https://github.com/rohithpudari/dotfiles/actions/workflows/build.yml/badge.svg)](https://github.com/rohithpudari/dotfiles/actions/workflows/build.yml)
 
+This dotfiles repo is heavily inspired by [Anishathyale dotfiles](https://github.com/anishathalye/dotfiles)
+
 After cloning this repo, run `install` to automatically set up the development
 environment. Note that the install script is idempotent: it can safely be run
 multiple times.
