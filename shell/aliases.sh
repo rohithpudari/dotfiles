@@ -41,9 +41,6 @@ alias f='open -a Finder ./'
 # search for a file using fuzzy finder and open in neovim
 alias fo="fd --type f | fzf | sed 's/\ /\\\ /g' | xargs nvim"
 
-# git related aliases
-alias gag='git exec ag'
-
 # Update dotfiles
 dfu() {
     (
