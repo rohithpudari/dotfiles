@@ -3,4 +3,4 @@ HISTFILE="$HOME/.bash_history"
 SAVEHIST=$HISTSIZE
 shopt -s histappend # append to history file
 
-export EDITOR=nvim
+export EDITOR=vim

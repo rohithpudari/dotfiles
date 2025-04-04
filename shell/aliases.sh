@@ -4,8 +4,6 @@ alias time_zsh='time zsh -i -c exit'
 alias ls='ls --color=auto'
 alias grep='grep --color'
 
-# nvim editor as default
-alias vi=nvim
 # cd aliases
 alias ..="cd .."
 alias ...="cd ../.."
@@ -40,6 +38,10 @@ alias f='open -a Finder ./'
 
 # search for a file using fuzzy finder and open in neovim
 alias fo="fd --type f | fzf | sed 's/\ /\\\ /g' | xargs nvim"
+
+# zoxide alias
+alias j=z
+
 
 # Update dotfiles
 dfu() {
@@ -150,12 +152,6 @@ fpr() {
     )
 }
 
-# Serve current directory
-
-serve() {
-    ruby -run -e httpd . -p "${1:-8080}"
-}
-
 # Mirror a website
 alias mirrorsite='wget -m -k -K -E -e robots=off'
 
@@ -171,7 +167,7 @@ alias brewfile='brew bundle dump --force'
 # git alias
 alias g='git'
 alias gph='git push'
-alias gsgpl='git pull'
+alias gpl='git pull'
 alias gm='git merge'
 alias gcm='git checkout main'
 alias gs='git status -sb'

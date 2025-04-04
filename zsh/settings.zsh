@@ -19,6 +19,23 @@ source <(fzf --zsh)
 export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"
 # Open in tmux popup if on tmux, otherwise use --height mode
 export FZF_DEFAULT_OPTS='--height 50% --tmux bottom,40% --layout reverse --border top'
+# moonfly colorscheme
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+  --color bg:#080808 \
+  --color bg+:#262626 \
+  --color border:#2e2e2e \
+  --color fg:#b2b2b2 \
+  --color fg+:#e4e4e4 \
+  --color gutter:#262626 \
+  --color header:#80a0ff \
+  --color hl+:#f09479 \
+  --color hl:#f09479 \
+  --color info:#cfcfb0 \
+  --color marker:#f09479 \
+  --color pointer:#ff5189 \
+  --color prompt:#80a0ff \
+  --color spinner:#36c692
+"
 export FZF_CTRL_T_OPTS='--preview "bat --style=numbers --color=always --line-range :500 {}"'
 export FZF_ALT_C_COMMAND="fd --type f --hidden --follow --strip-cwd-prefix . $HOME"
 
@@ -38,9 +55,6 @@ setopt extendedhistory
 
 # Time to wait for additional characters in a sequence
 KEYTIMEOUT=1 # corresponds to 10ms
-
-# Use vim as the editor
-export EDITOR=nvim
 
 # Use vim style line editing in zsh
 bindkey -v

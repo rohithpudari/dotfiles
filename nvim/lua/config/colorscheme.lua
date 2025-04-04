@@ -1,0 +1,3 @@
+return {
+    "rebolt/kanagawa.nvim"
+}
