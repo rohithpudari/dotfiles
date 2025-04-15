@@ -79,3 +79,6 @@ multiplier = 3
 [selection]
 save_to_clipboard = true
 semantic_escape_chars = "|:\"' {}()[]<>"
+
+[keyboard]
+bindings = [{ key = "Backspace", mods = "Alt", chars = "\u0017" }]
