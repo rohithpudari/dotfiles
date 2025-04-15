@@ -1,5 +1,5 @@
 # zprof for profiling
-zmodload zsh/zprof
+# zmodload zsh/zprof
 
 # Functions
 source ~/.shell/functions.sh

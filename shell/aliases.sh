@@ -1,18 +1,9 @@
 # time_zsh load time
 alias time_zsh='time zsh -i -c exit'
+
 # Use colors in coreutils utilities output
 alias ls='ls --color=auto'
 alias grep='grep --color'
-
-# cd aliases
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-
-# frequently used folders
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
 
 # ls aliases
 alias ll='ls -lah'
@@ -42,25 +33,24 @@ alias fo="fd --type f | fzf | sed 's/\ /\\\ /g' | xargs nvim"
 # zoxide alias
 alias j=z
 
-
 # Update dotfiles
 dfu() {
-    (
-        cd ~/.dotfiles && git pull --ff-only && ./install -q
-    )
+  (
+    cd ~/.dotfiles && git pull --ff-only && ./install -q
+  )
 }
 
 # Use pip without requiring virtualenv
 syspip() {
-    PIP_REQUIRE_VIRTUALENV="" pip "$@"
+  PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
 
 syspip2() {
-    PIP_REQUIRE_VIRTUALENV="" pip2 "$@"
+  PIP_REQUIRE_VIRTUALENV="" pip2 "$@"
 }
 
 syspip3() {
-    PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
+  PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
 }
 
 # cd to git root directory
@@ -68,88 +58,86 @@ alias cdgr='cd "$(git root)"'
 
 # Create a directory and cd into it
 mcd() {
-    mkdir "${1}" && cd "${1}"
+  mkdir "${1}" && cd "${1}"
 }
 
 # Jump to directory containing file
 jump() {
-    cd "$(dirname ${1})"
+  cd "$(dirname ${1})"
 }
 
 # cd replacement for screen to track cwd (like tmux)
-scr_cd()
-{
-    builtin cd $1
-    screen -X chdir "$PWD"
+scr_cd() {
+  builtin cd $1
+  screen -X chdir "$PWD"
 }
 
 if [[ -n $STY ]]; then
-    alias cd=scr_cd
+  alias cd=scr_cd
 fi
 
 # Go up [n] directories
-up()
-{
-    local cdir="$(pwd)"
-    if [[ "${1}" == "" ]]; then
-        cdir="$(dirname "${cdir}")"
-    elif ! [[ "${1}" =~ ^[0-9]+$ ]]; then
-        echo "Error: argument must be a number"
-    elif ! [[ "${1}" -gt "0" ]]; then
-        echo "Error: argument must be positive"
-    else
-        for ((i=0; i<${1}; i++)); do
-            local ncdir="$(dirname "${cdir}")"
-            if [[ "${cdir}" == "${ncdir}" ]]; then
-                break
-            else
-                cdir="${ncdir}"
-            fi
-        done
-    fi
-    cd "${cdir}"
+up() {
+  local cdir="$(pwd)"
+  if [[ "${1}" == "" ]]; then
+    cdir="$(dirname "${cdir}")"
+  elif ! [[ "${1}" =~ ^[0-9]+$ ]]; then
+    echo "Error: argument must be a number"
+  elif ! [[ "${1}" -gt "0" ]]; then
+    echo "Error: argument must be positive"
+  else
+    for ((i = 0; i < ${1}; i++)); do
+      local ncdir="$(dirname "${cdir}")"
+      if [[ "${cdir}" == "${ncdir}" ]]; then
+        break
+      else
+        cdir="${ncdir}"
+      fi
+    done
+  fi
+  cd "${cdir}"
 }
 
 # Execute a command in a specific directory
 xin() {
-    (
-        cd "${1}" && shift && "${@}"
-    )
+  (
+    cd "${1}" && shift && "${@}"
+  )
 }
 
 # Check if a file contains non-ascii characters
-nonascii() {
-    LC_ALL=C grep -n '[^[:print:][:space:]]' "${@}"
-}
+# nonascii() {
+# LC_ALL=C grep -n '[^[:print:][:space:]]' "${@}"
+# }
 
 # Fetch pull request
 
 fpr() {
-    if ! git rev-parse --git-dir > /dev/null 2>&1; then
-        echo "error: fpr must be executed from within a git repository"
-        return 1
+  if ! git rev-parse --git-dir >/dev/null 2>&1; then
+    echo "error: fpr must be executed from within a git repository"
+    return 1
+  fi
+  (
+    cdgr
+    if [ "$#" -eq 1 ]; then
+      local repo="${PWD##*/}"
+      local user="${1%%:*}"
+      local branch="${1#*:}"
+    elif [ "$#" -eq 2 ]; then
+      local repo="${PWD##*/}"
+      local user="${1}"
+      local branch="${2}"
+    elif [ "$#" -eq 3 ]; then
+      local repo="${1}"
+      local user="${2}"
+      local branch="${3}"
+    else
+      echo "Usage: fpr [repo] username branch"
+      return 1
     fi
-    (
-        cdgr
-        if [ "$#" -eq 1 ]; then
-            local repo="${PWD##*/}"
-            local user="${1%%:*}"
-            local branch="${1#*:}"
-        elif [ "$#" -eq 2 ]; then
-            local repo="${PWD##*/}"
-            local user="${1}"
-            local branch="${2}"
-        elif [ "$#" -eq 3 ]; then
-            local repo="${1}"
-            local user="${2}"
-            local branch="${3}"
-        else
-            echo "Usage: fpr [repo] username branch"
-            return 1
-        fi
 
-        git fetch "git@github.com:${user}/${repo}" "${branch}:${user}/${branch}"
-    )
+    git fetch "git@github.com:${user}/${repo}" "${branch}:${user}/${branch}"
+  )
 }
 
 # Mirror a website
@@ -157,12 +145,6 @@ alias mirrorsite='wget -m -k -K -E -e robots=off'
 
 # Mirror stdout to stderr, useful for seeing data going through a pipe
 alias peek='tee >(cat 1>&2)'
-
-# brew alias
-alias bubo='brew update && brew outdated'
-alias bubc='brew upgrade && brew cleanup'
-alias bu='brew update && brew outdated && brew upgrade && brew cleanup'
-alias brewfile='brew bundle dump --force'
 
 # git alias
 alias g='git'
