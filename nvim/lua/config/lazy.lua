@@ -19,13 +19,14 @@ require("lazy").setup({
 		-- add LazyVim and import its plugins
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
 		--extras
+		{ import = "lazyvim.plugins.extras.coding.Luasnip" },
 		{ import = "lazyvim.plugins.extras.coding.blink" },
 		{ import = "lazyvim.plugins.extras.lang.markdown" },
 		{ import = "lazyvim.plugins.extras.ai.copilot" },
 		{ import = "lazyvim.plugins.extras.lang.python" },
 		{ import = "lazyvim.plugins.extras.lang.toml" },
-		{ import = "lazyvim.plugins.extras.lang.tex" },
 		{ import = "lazyvim.plugins.extras.editor.fzf" },
+		{ import = "lazyvim.plugins.extras.lang.tex" },
 		-- import/override with your plugins
 		{ import = "plugins" },
 	},

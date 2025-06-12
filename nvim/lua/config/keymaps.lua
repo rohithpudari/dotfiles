@@ -10,6 +10,13 @@ vim.keymap.set("", "L", "$")
 --  See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- moving tabs conveniently
+vim.keymap.set("n", "<leader>1", "1gt", { desc = "Move to tab 1" })
+vim.keymap.set("n", "<leader>2", "2gt", { desc = "Move to tab 2" })
+vim.keymap.set("n", "<leader>3", "3gt", { desc = "Move to tab 3" })
+vim.keymap.set("n", "<leader>4", "4gt", { desc = "Move to tab 4" })
+vim.keymap.set("n", "<leader>5", "5gt", { desc = "Move to tab 5" })
+
 -- Disable arrow keys in normal mode - remove later after muscle memory
 vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
