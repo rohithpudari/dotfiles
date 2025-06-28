@@ -35,6 +35,3 @@ fi
 if [[ "$(tput colors)" == "256" ]]; then
     eval $(dircolors =(cat ~/.shell/plugins/dircolors-solarized/dircolors.ansi-dark))
 fi
-
-# autocompletions for uv
-eval "$(uv generate-shell-completion zsh)"

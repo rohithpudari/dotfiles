@@ -1,7 +1,5 @@
 return {
 	"vimwiki/vimwiki",
-	event = "BufEnter *.md",
-	keys = { "<leader>ww", "<leader>wt" },
 	init = function()
 		vim.g.vimwiki_list = {
 			{ path = "/Users/rohith/Documents/notes", syntax = "markdown", ext = ".md", links_space_char = "-" },

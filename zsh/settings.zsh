@@ -1,5 +1,9 @@
 # Initialize completion
-autoload -Uz compinit && compinit -i
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 zstyle ':completion:*' menu select=4
 zmodload zsh/complist
 
