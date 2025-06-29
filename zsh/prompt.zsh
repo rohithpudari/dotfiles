@@ -14,29 +14,24 @@ setopt prompt_subst
 # Load color variables to make it easier to color things
 autoload -U colors && colors
 
-# Make using 256 colors easier
-if [[ "$(tput colors)" == "256" ]]; then
+# Assume 256 colors and set directly (fastest approach)
+if [[ -f ~/.zsh/plugins/spectrum.zsh ]]; then
     source ~/.zsh/plugins/spectrum.zsh
-    # change default colors
-    fg[red]=$FG[160]
-    fg[green]=$FG[064]
-    fg[yellow]=$FG[136]
-    fg[blue]=$FG[033]
-    fg[magenta]=$FG[125]
-    fg[cyan]=$FG[037]
-
-    fg[teal]=$FG[041]
-    fg[orange]=$FG[166]
-    fg[violet]=$FG[061]
-    fg[neon]=$FG[112]
-    fg[pink]=$FG[183]
-else
-    fg[teal]=$fg[blue]
-    fg[orange]=$fg[yellow]
-    fg[violet]=$fg[magenta]
-    fg[neon]=$fg[green]
-    fg[pink]=$fg[magenta]
+    
+    # Direct color assignments (no subprocess calls)
+    fg[red]=$'\e[38;5;160m'
+    fg[green]=$'\e[38;5;64m'
+    fg[yellow]=$'\e[38;5;136m'
+    fg[blue]=$'\e[38;5;33m'
+    fg[magenta]=$'\e[38;5;125m'
+    fg[cyan]=$'\e[38;5;37m'
+    fg[teal]=$'\e[38;5;41m'
+    fg[orange]=$'\e[38;5;166m'
+    fg[violet]=$'\e[38;5;61m'
+    fg[neon]=$'\e[38;5;112m'
+    fg[pink]=$'\e[38;5;183m'
 fi
+
 
 # Current directory, truncated to 3 path elements (or 4 when one of them is "~")
 # The number of elements to keep can be specified as ${1}

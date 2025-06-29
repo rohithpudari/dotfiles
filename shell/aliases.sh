@@ -34,7 +34,7 @@ alias ff='fzf --tmux'
 alias fo="fd --type f | fzf | sed 's/\ /\\\ /g' | xargs nvim"
 
 # zoxide alias
-alias j=z
+alias j='z'
 
 # Update dotfiles
 dfu() {

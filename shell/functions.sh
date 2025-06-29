@@ -1,16 +1,30 @@
-path_remove() {
-    PATH=$(echo -n "$PATH" | awk -v RS=: -v ORS=: "\$0 != \"$1\"" | sed 's/:$//')
-}
+# path_remove() {
+#     PATH=$(echo -n "$PATH" | awk -v RS=: -v ORS=: "\$0 != \"$1\"" | sed 's/:$//')
+# }
+
+# Much faster path manipulation using zsh arrays
+# path_remove() {
+#    local target="$1"
+#    # Use zsh's built-in array filtering - much faster than awk/sed
+#    path=(${path:#$target})
+# }
 
 # path_append() {
 #     path_remove "$1"
 #     PATH="${PATH:+"$PATH:"}$1"
 # }
 
-path_prepend() {
-    path_remove "$1"
-    PATH="$1${PATH:+":$PATH"}"
-}
+# path_prepend() {
+#     path_remove "$1"
+#     PATH="$1${PATH:+":$PATH"}"
+# }
+
+#path_prepend() {
+#    local target="$1"
+#    # Remove if exists, then prepend - single operation
+#    path=(${path:#$target})
+#    path=("$target" $path)
+#}
 
 here() {
     local loc
