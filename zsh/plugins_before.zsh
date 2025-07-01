@@ -10,7 +10,6 @@
 typeset -U fpath
 fpath=(
     ~/.zsh/plugins/zsh-completions/src
-    ~/.docker/completions
     $fpath
 )
 

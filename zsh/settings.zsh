@@ -1,49 +1,8 @@
-# Lazy-load completion system
-_load_completions() {
-    autoload -Uz compinit && compinit -C
-    
-    # Enable caching
-    zstyle ':completion:*' use-cache on
-    zstyle ':completion:*' cache-path ~/.zsh/cache
-    
-    unfunction _load_completions
-}
-
-autoload -U add-zsh-hook
-add-zsh-hook precmd _load_completions
-
-# auto-suggestions
-# Performance-optimized lazy-loaded auto-suggestions
-_load_autosuggestions() {
-    # Use hardcoded path to avoid subprocess call
-    local autosuggest_path="/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-    
-    if [[ -f "$autosuggest_path" ]]; then
-        # Set performance variables BEFORE sourcing for better initialization
-        ZSH_AUTOSUGGEST_STRATEGY=(history)  # Simplified strategy - removed expensive match_prev_cmd and completion
-        ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#b2b2b2"  # Removed underline for performance
-        ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-        ZSH_AUTOSUGGEST_USE_ASYNC=1  # Use 1 instead of true
-        ZSH_AUTOSUGGEST_MANUAL_REBIND=1  # Critical performance improvement
-        
-        # Reduce widget binding overhead
-        ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(
-            history-search-forward
-            history-search-backward
-        )
-        ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(
-            forward-char
-            end-of-line
-        )
-        
-        source "$autosuggest_path"
-        unfunction _load_autosuggestions
-    fi
-}
-
-# Load autosuggestions only when first command is executed
-autoload -U add-zsh-hook
-add-zsh-hook preexec _load_autosuggestions
+# Always use fast mode for maximum performance
+autoload -Uz compinit && compinit -C
+# Enable caching for better performance
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # Lazy load menuselect keybindings
 # # Use vim style navigation keys in menu completion
