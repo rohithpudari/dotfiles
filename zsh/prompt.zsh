@@ -83,7 +83,7 @@ function PR_ARROW() {
 
 # Set custom rhs prompt
 # User in red (for root) or violet (for regular user)
-RPR_SHOW_USER=false # Set to false to disable user in rhs prompt
+RPR_SHOW_USER=true # Set to false to disable user in rhs prompt
 function RPR_USER() {
     if [[ "${RPR_SHOW_USER}" == "true" ]]; then
         echo "%(!.%{$fg[red]%}.%{$fg[violet]%})%n%{$reset_color%}"
@@ -101,7 +101,7 @@ function machine_name() {
 PROMPT_PYTHON="$(command -v python || command -v python3 || command -v python2)"
 
 # Host in a deterministically chosen color
-RPR_SHOW_HOST=false # Set to false to disable host in rhs prompt
+RPR_SHOW_HOST=true # Set to false to disable host in rhs prompt
 function RPR_HOST() {
     local colors
     colors=(cyan green yellow red pink)

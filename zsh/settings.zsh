@@ -3,6 +3,7 @@ autoload -Uz compinit && compinit -C
 # Enable caching for better performance
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' menu select=4
 
 # Lazy load menuselect keybindings
 # # Use vim style navigation keys in menu completion
