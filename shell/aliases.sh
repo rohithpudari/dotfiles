@@ -159,6 +159,7 @@ alias gs='git status -sb'
 alias gc='git commit -v -m'
 alias ga='git add'
 alias gaa='git add -A'
+alias grg='git exec rg'
 
 # venv aliases
 alias pyenvs='pyenv versions'

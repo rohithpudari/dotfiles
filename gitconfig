@@ -72,7 +72,7 @@
 	ui = auto
 
 [color "grep"]
-	match = cyan
+	match = cyan bold
 	selected = blue
 	context = normal
 	filename = magenta
@@ -112,7 +112,6 @@
 [user]
 	useConfigOnly = true
 	signingkey = 0x6811B6CD9AFC722A
-	email = 27728974+rohithpudari@users.noreply.github.com
 
 [http]
 	cookieFile = ~/.gitcookies
@@ -123,10 +122,6 @@
 [url "https://github.com/"]
  	insteadOf = git://github.com/
 
-# Allow local customizations in the .gitconfig_local file
-[include]
-	path = ~/.gitconfig_local
-
 [commit]
 	gpgsign = true
 
@@ -135,3 +130,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+# Allow local customizations in the .gitconfig_local file
+[include]
+	path = ~/.git/gitconfig_local

@@ -65,12 +65,12 @@ function PR_DIR() {
         last=${last[2,-1]} # take substring
     fi
 
-    echo "%{$fg[green]%}${truncated}%{$fg[cyan]%}${last}%{$reset_color%}"
+    echo "%{$fg[green]%}${truncated}%{$fg[teal]%}%B${last}%b%{$reset_color%}"
 }
 
 # An exclamation point if the previous command did not complete successfully
 function PR_ERROR() {
-    echo "%(?..%(!.%{$fg[violet]%}.%{$fg[red]%})!%{$reset_color%} )"
+    echo "%(?..%(!.%{$fg[violet]%}.%{$fg[red]%})%B!%b%{$reset_color%} )"
 }
 
 # The arrow symbol that is used in the prompt
@@ -78,7 +78,7 @@ PR_ARROW_CHAR=">"
 
 # The arrow in red (for root) or violet (for regular user)
 function PR_ARROW() {
-    echo "%(!.%{$fg[red]%}.%{$fg[orange]%})${PR_ARROW_CHAR}%{$reset_color%}"
+    echo "%(!.%{$fg[red]%}.%{$fg[violet]%})${PR_ARROW_CHAR}%{$reset_color%}"
 }
 
 # Set custom rhs prompt
@@ -86,7 +86,7 @@ function PR_ARROW() {
 RPR_SHOW_USER=true # Set to false to disable user in rhs prompt
 function RPR_USER() {
     if [[ "${RPR_SHOW_USER}" == "true" ]]; then
-        echo "%(!.%{$fg[red]%}.%{$fg[violet]%})%n%{$reset_color%}"
+        echo "%(!.%{$fg[red]%}.%{$fg[violet]%})%B%n%b%{$reset_color%}"
     fi
 }
 
@@ -135,15 +135,15 @@ function RPR_INFO() {
 # Set RHS prompt for git repositories
 DIFF_SYMBOL="-"
 GIT_PROMPT_SYMBOL=""
-GIT_PROMPT_PREFIX="%{$fg[violet]%}(%{$reset_color%}"
-GIT_PROMPT_SUFFIX="%{$fg[violet]%})%{$reset_color%}"
-GIT_PROMPT_AHEAD="%{$fg[teal]%}+NUM%{$reset_color%}"
-GIT_PROMPT_BEHIND="%{$fg[orange]%-NUM%{$reset_color%}"
-GIT_PROMPT_MERGING="%{$fg[cyan]%}x%{$reset_color%}"
-GIT_PROMPT_UNTRACKED="%{$fg[red]%}$DIFF_SYMBOL%{$reset_color%}"
-GIT_PROMPT_MODIFIED="%{$fg[yellow]%}$DIFF_SYMBOL%{$reset_color%}"
-GIT_PROMPT_STAGED="%{$fg[green]%}$DIFF_SYMBOL%{$reset_color%}"
-GIT_PROMPT_DETACHED="%{$fg[neon]%}!%{$reset_color%}"
+GIT_PROMPT_PREFIX="%{$fg[violet]%}%B(%b%{$reset_color%}"
+GIT_PROMPT_SUFFIX="%{$fg[violet]%}%B)%b%{$reset_color%}"
+GIT_PROMPT_AHEAD="%{$fg[teal]%}%B+NUM%b%{$reset_color%}"
+GIT_PROMPT_BEHIND="%{$fg[orange]%}%B-NUM%b%{$reset_color%}"
+GIT_PROMPT_MERGING="%{$fg[cyan]%}%Bx%b%{$reset_color%}"
+GIT_PROMPT_UNTRACKED="%{$fg[red]%}%B$DIFF_SYMBOL%b%{$reset_color%}"
+GIT_PROMPT_MODIFIED="%{$fg[yellow]%}%B$DIFF_SYMBOL%b%{$reset_color%}"
+GIT_PROMPT_STAGED="%{$fg[green]%}%B$DIFF_SYMBOL%b%{$reset_color%}"
+GIT_PROMPT_DETACHED="%{$fg[neon]%}%B!%b%{$reset_color%}"
 
 # Show Git branch/tag, or name-rev if on detached head
 function parse_git_branch() {
@@ -210,7 +210,7 @@ function git_prompt_string() {
     if [[ "${RPR_SHOW_GIT}" == "true" ]]; then
         local git_where="$(parse_git_branch)"
         local git_detached="$(parse_git_detached)"
-        [ -n "$git_where" ] && echo " $GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[magenta]%}${git_where#(refs/heads/|tags/)}$git_detached$GIT_PROMPT_SUFFIX"
+        [ -n "$git_where" ] && echo " $GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[magenta]%}%B${git_where#(refs/heads/|tags/)}%b$git_detached$GIT_PROMPT_SUFFIX"
     fi
 }
 

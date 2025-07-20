@@ -2,7 +2,7 @@
 autoload -Uz compinit && compinit -C
 # Enable caching for better performance
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' cache-path ~/.cache/zsh-completion
 zstyle ':completion:*' menu select=4
 
 # Lazy load menuselect keybindings
@@ -26,32 +26,28 @@ add-zsh-hook precmd _setup_menuselect_keys
 source <(fzf --zsh)
 export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"
 # Open in tmux popup if on tmux, otherwise use --height mode
-export FZF_DEFAULT_OPTS='--height 50% --tmux bottom,40% --layout reverse --border top'
-# moonfly colorscheme
+export FZF_DEFAULT_OPTS="--height 30% --tmux bottom,40% --style minimal --layout reverse --border top --preview='bat --color=always --style=numbers --color=always --line-range :500 {}'"
+# catppuccin colorscheme
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-  --color bg:#080808 \
-  --color bg+:#262626 \
-  --color border:#2e2e2e \
-  --color fg:#b2b2b2 \
-  --color fg+:#e4e4e4 \
-  --color gutter:#262626 \
-  --color header:#80a0ff \
-  --color hl+:#f09479 \
-  --color hl:#f09479 \
-  --color info:#cfcfb0 \
-  --color marker:#f09479 \
-  --color pointer:#ff5189 \
-  --color prompt:#80a0ff \
-  --color spinner:#36c692
-"
-export FZF_CTRL_T_OPTS='--preview "bat --style=numbers --color=always --line-range :500 {}"'
-export FZF_ALT_C_COMMAND="fd --type f --hidden --follow --strip-cwd-prefix . $HOME"
+--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+--color=selected-bg:#45475A \
+--color=border:#313244,label:#CDD6F4"
+export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=numbers --color=always --line-range :500 {}"'
+export FZF_CTRL_R_OPTS="
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
 
 # Initialize editing command line
 autoload -U edit-command-line && zle -N edit-command-line
 
 # Enable interactive comments (# on the command line)
 setopt interactivecomments
+
+# type a dir to cd
+setopt autocd
 
 # Nicer history
 HISTSIZE=1048576
@@ -60,6 +56,7 @@ SAVEHIST=$HISTSIZE
 setopt appendhistory
 setopt incappendhistory
 setopt extendedhistory
+HISTCONTROL=ignoreboth # consecutive duplicates & commands starting with space are not saved
 # remove duplicates from history
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -73,14 +70,21 @@ bindkey -v
 # Movement
 bindkey -a 'gg' beginning-of-buffer-or-history
 bindkey -a 'G' end-of-buffer-or-history
-# Undo
-bindkey -a 'u' undo
-bindkey -a '^R' redo
+bindkey -a '^a' beginning-of-line
+bindkey -a '^e' end-of-line
+bindkey -a '^k' kill-line
+
 # Edit line in vim file mode
 bindkey -a '^V' edit-command-line
+
 # Backspace
 bindkey '^?' backward-delete-char
 bindkey '^H' backward-delete-char
+
+# ctrl +j and k for going up and down in history
+bindkey '^J' history-search-forward
+bindkey '^K' history-search-backward
+bindkey '^R' fzf-history-widget
 
 # Use incremental search
 # bindkey "^R" history-incremental-search-backward

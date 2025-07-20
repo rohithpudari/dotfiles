@@ -18,7 +18,8 @@
     ~/.pythonrc:
     ~/.screenrc:
     ~/.shell:
-    ~/.tmux.conf:
+    ~/.config/.tmux: tmux/plugins
+    ~/.tmux.conf: tmux/tmux.conf
     ~/.alacritty.toml:
     ~/.zsh:
     ~/.zshrc:
