@@ -24,7 +24,7 @@ add-zsh-hook precmd _setup_menuselect_keys
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"
+export FZF_DEFAULT_COMMAND="bfs -type f -hidden -follow -exclude -name .git"
 # Open in tmux popup if on tmux, otherwise use --height mode
 export FZF_DEFAULT_OPTS="--height 30% --tmux bottom,40% --style minimal --layout reverse --border top --preview='bat --color=always --style=numbers --color=always --line-range :500 {}'"
 # catppuccin colorscheme

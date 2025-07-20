@@ -32,7 +32,6 @@ if [[ -f ~/.zsh/plugins/spectrum.zsh ]]; then
     fg[pink]=$'\e[38;5;183m'
 fi
 
-
 # Current directory, truncated to 3 path elements (or 4 when one of them is "~")
 # The number of elements to keep can be specified as ${1}
 function PR_DIR() {
@@ -98,7 +97,7 @@ function machine_name() {
     fi
 }
 
-PROMPT_PYTHON="$(command -v python || command -v python3 || command -v python2)"
+PROMPT_PYTHON="$(command -v python3 || command -v python2 || command -v python)"
 
 # Host in a deterministically chosen color
 RPR_SHOW_HOST=true # Set to false to disable host in rhs prompt
@@ -120,7 +119,7 @@ EOF
     fi
 }
 
-# ' at ' in orange outputted only if both user and host enabled
+# ' at ' in blue outputted only if both user and host enabled
 function RPR_AT() {
     if [[ "${RPR_SHOW_USER}" == "true" ]] && [[ "${RPR_SHOW_HOST}" == "true" ]]; then
         echo "%{$fg[blue]%} at %{$reset_color%}"
