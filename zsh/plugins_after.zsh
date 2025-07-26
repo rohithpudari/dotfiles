@@ -9,8 +9,7 @@ _load_syntax_highlighting() {
         source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
         # Configure highlighters after loading
-        ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-        typeset -gA ZSH_HIGHLIGHT_STYLES
+        ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
 
         # Performance optimizations
         ZSH_HIGHLIGHT_MAXLENGTH=256  # Shorter limit for better performance
@@ -70,7 +69,8 @@ _load_syntax_highlighting() {
             ZSH_HIGHLIGHT_STYLES[numeric-fd]='fg=#cdd6f4'
             ## No category relevant in spec
             ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#eba0ac'
-            ZSH_HIGHLIGHT_STYLES[path]='fg=#cdd6f4,underline'
+            #ZSH_HIGHLIGHT_STYLES[path]='fg=#cdd6f4,underline'
+            ZSH_HIGHLIGHT_STYLES[path]='fg=#a6e3a1,underline' # custom color for path
             ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=#f38ba8,underline'
             ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=#cdd6f4,underline'
             ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]='fg=#f38ba8,underline'
@@ -94,26 +94,6 @@ _load_syntax_highlighting() {
 # Load syntax highlighting on first command execution
 autoload -U add-zsh-hook
 add-zsh-hook preexec _load_syntax_highlighting
-
-# # dircolors
-# # Lazy-load dircolors configuration
-# _setup_dircolors() {
-#     local dircolors_cache="$HOME/.cache/dircolors.zsh"
-#
-#     if [[ "$(tput colors)" == "256" ]]; then
-#         # Create cache if it doesn't exist or is older than source
-#         if [[ ! -f "$dircolors_cache" ]] || [[ ~/.shell/plugins/dircolors-solarized/dircolors.256dark -nt "$dircolors_cache" ]]; then
-#             mkdir -p "$(dirname "$dircolors_cache")"
-#             dircolors ~/.shell/plugins/dircolors-solarized/dircolors.256dark > "$dircolors_cache"
-#         fi
-#
-#         # Source cached output
-#         source "$dircolors_cache"
-#     fi
-# }
-#
-# # Load dircolors in background to not block startup
-# _setup_dircolors &!
 
 # dircolors
 # Lazy-load dircolors configuration

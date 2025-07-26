@@ -30,9 +30,6 @@ alias f='open -a Finder ./'
 # open fzf tmux window for file search
 alias ff='fzf --tmux'
 
-# search for a file using fuzzy finder and open in neovim
-alias fo="bfs -type f | fzf | sed 's/\ /\\\ /g' | xargs nvim"
-
 # zoxide alias
 alias j='z'
 

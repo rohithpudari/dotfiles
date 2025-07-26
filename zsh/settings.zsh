@@ -7,38 +7,27 @@ zstyle ':completion:*' menu select=4
 
 # Lazy load menuselect keybindings
 # # Use vim style navigation keys in menu completion
-_setup_menuselect_keys() {
-    zmodload -i zsh/complist
-    bindkey -M menuselect 'h' vi-backward-char
-    bindkey -M menuselect 'k' vi-up-line-or-history  
-    bindkey -M menuselect 'l' vi-forward-char
-    bindkey -M menuselect 'j' vi-down-line-or-history
-    
-    # Remove this function after first use
-    unfunction _setup_menuselect_keys
-}
+# _setup_menuselect_keys() {
+#     zmodload -i zsh/complist
+#     bindkey -M menuselect 'h' vi-backward-char
+#     bindkey -M menuselect 'k' vi-up-line-or-history  
+#     bindkey -M menuselect 'l' vi-forward-char
+#     bindkey -M menuselect 'j' vi-down-line-or-history
+#
+#     # Remove this function after first use
+#     unfunction _setup_menuselect_keys
+# }
+#
+# # Set up keybindings when completion is first triggered
+# autoload -U add-zsh-hook
+# add-zsh-hook precmd _setup_menuselect_keys
 
-# Set up keybindings when completion is first triggered
-autoload -U add-zsh-hook
-add-zsh-hook precmd _setup_menuselect_keys
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-export FZF_DEFAULT_COMMAND="bfs -type f -hidden -follow -exclude -name .git"
-# Open in tmux popup if on tmux, otherwise use --height mode
-export FZF_DEFAULT_OPTS="--height 30% --tmux bottom,40% --style minimal --layout reverse --border top --preview='bat --color=always --style=numbers --color=always --line-range :500 {}'"
-# catppuccin colorscheme
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
---color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
---color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
---color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
---color=selected-bg:#45475A \
---color=border:#313244,label:#CDD6F4"
-export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=numbers --color=always --line-range :500 {}"'
-export FZF_CTRL_R_OPTS="
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
-  --color header:italic
-  --header 'Press CTRL-Y to copy command into clipboard'"
+# Load menuselect and set up vi-style navigation
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history  
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
 
 # Initialize editing command line
 autoload -U edit-command-line && zle -N edit-command-line
@@ -81,16 +70,26 @@ bindkey -a '^V' edit-command-line
 bindkey '^?' backward-delete-char
 bindkey '^H' backward-delete-char
 
-# ctrl +j and k for going up and down in history
-bindkey '^J' history-search-forward
-bindkey '^K' history-search-backward
+# ctrl + r for fzf history search
 bindkey '^R' fzf-history-widget
-
-# Use incremental search
-# bindkey "^R" history-incremental-search-backward
 
 # Disable shell builtins
 disable r
 
-# Zsh completion accept to tab
-bindkey '^I' autosuggest-accept
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+export FZF_DEFAULT_COMMAND="bfs -type f -hidden -follow -exclude -name .git"
+# Open in tmux popup if on tmux, otherwise use --height mode
+export FZF_DEFAULT_OPTS="--height 30% --tmux bottom,40% --style minimal --layout reverse --border top --preview='bat --color=always --style=numbers --color=always --line-range :500 {}'"
+# catppuccin colorscheme
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+--color=selected-bg:#45475A \
+--color=border:#313244,label:#CDD6F4"
+export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=numbers --color=always --line-range :500 {}"'
+export FZF_CTRL_R_OPTS="
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
