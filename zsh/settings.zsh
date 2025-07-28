@@ -6,28 +6,21 @@ zstyle ':completion:*' cache-path ~/.cache/zsh-completion
 zstyle ':completion:*' menu select=4
 
 # Lazy load menuselect keybindings
-# # Use vim style navigation keys in menu completion
-# _setup_menuselect_keys() {
-#     zmodload -i zsh/complist
-#     bindkey -M menuselect 'h' vi-backward-char
-#     bindkey -M menuselect 'k' vi-up-line-or-history  
-#     bindkey -M menuselect 'l' vi-forward-char
-#     bindkey -M menuselect 'j' vi-down-line-or-history
-#
-#     # Remove this function after first use
-#     unfunction _setup_menuselect_keys
-# }
-#
-# # Set up keybindings when completion is first triggered
-# autoload -U add-zsh-hook
-# add-zsh-hook precmd _setup_menuselect_keys
+# Use vim style navigation keys in menu completion
+_setup_menuselect_keys() {
+    zmodload -i zsh/complist
+    bindkey -M menuselect 'h' vi-backward-char
+    bindkey -M menuselect 'k' vi-up-line-or-history  
+    bindkey -M menuselect 'l' vi-forward-char
+    bindkey -M menuselect 'j' vi-down-line-or-history
 
-# Load menuselect and set up vi-style navigation
-zmodload zsh/complist
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history  
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
+    # Remove this function after first use
+    unfunction _setup_menuselect_keys
+}
+
+# Set up keybindings when completion is first triggered
+autoload -U add-zsh-hook
+add-zsh-hook precmd _setup_menuselect_keys
 
 # Initialize editing command line
 autoload -U edit-command-line && zle -N edit-command-line
@@ -37,6 +30,12 @@ setopt interactivecomments
 
 # type a dir to cd
 setopt autocd
+
+# don't warn about running processes when exiting
+setopt nocheckjobs
+
+# no beep
+setopt nobeep
 
 # Nicer history
 HISTSIZE=1048576
