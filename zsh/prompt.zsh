@@ -97,14 +97,21 @@ function machine_name() {
     fi
 }
 
-PROMPT_PYTHON="$(command -v python3 || command -v python2 || command -v python)"
+function _pick_python() {
+    command -v python3 2>/dev/null || \
+    command -v python2 2>/dev/null || \
+    command -v python  2>/dev/null
+}
+
+# PROMPT_PYTHON="$(command -v python3 || command -v python2 || command -v python)"
 
 # Host in a deterministically chosen color
 RPR_SHOW_HOST=false # Set to false to disable host in rhs prompt
 function RPR_HOST() {
     local colors
     colors=(cyan green yellow red pink)
-    local index=$("$PROMPT_PYTHON" <<EOF
+    #local index=$("$PROMPT_PYTHON" <<EOF
+    local index=$("$(_pick_python)" <<EOF
 import hashlib
 
 hash = int(hashlib.sha1('$(machine_name)'.encode('utf8')).hexdigest(), 16)

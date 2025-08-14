@@ -4,6 +4,7 @@ alias time_zsh='time zsh -i -c exit'
 # Use colors in coreutils utilities output
 alias ls='ls --color=auto'
 alias grep='grep --color'
+alias rg='rg --smart-case'
 
 # ls aliases
 alias ll='ls -lah'
@@ -26,9 +27,6 @@ alias rm='rm -i'
 
 # Open a Finder window in your current directory
 alias f='open -a Finder ./'
-
-# open fzf tmux window for file search
-alias ff='fzf --tmux'
 
 # zoxide alias
 alias j='z'

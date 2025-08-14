@@ -79,7 +79,7 @@ disable r
 source <(fzf --zsh)
 export FZF_DEFAULT_COMMAND="bfs -type f -hidden -follow -exclude -name .git"
 # Open in tmux popup if on tmux, otherwise use --height mode
-export FZF_DEFAULT_OPTS="--height 30% --tmux bottom,40% --style minimal --layout reverse --border top --preview='bat --color=always --style=numbers --color=always --line-range :500 {}'"
+export FZF_DEFAULT_OPTS="--height 50% --tmux bottom,40% --layout reverse --border top --preview='bat --color=always --style=numbers --color=always --line-range :500 {}'"
 # catppuccin colorscheme
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
