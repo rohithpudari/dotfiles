@@ -48,6 +48,8 @@ HISTCONTROL=ignoreboth # consecutive duplicates & commands starting with space a
 # remove duplicates from history
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
+# don't have duplicates in directory stack
+setopt pushd_ignore_dups
 
 # Time to wait for additional characters in a sequence
 KEYTIMEOUT=1 # corresponds to 10ms
@@ -67,7 +69,8 @@ bindkey -a '^V' edit-command-line
 
 # Backspace
 bindkey '^?' backward-delete-char
-bindkey '^H' backward-delete-char
+# Alt+Backspace binding as delete word
+bindkey '^[^?' backward-kill-word
 
 # ctrl + r for fzf history search
 bindkey '^R' fzf-history-widget
@@ -77,7 +80,7 @@ disable r
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-export FZF_DEFAULT_COMMAND="bfs -type f -hidden -follow -exclude -name .git"
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
 # Open in tmux popup if on tmux, otherwise use --height mode
 export FZF_DEFAULT_OPTS="--height 50% --tmux bottom,40% --layout reverse --border top --preview='bat --color=always --style=numbers --color=always --line-range :500 {}'"
 # catppuccin colorscheme

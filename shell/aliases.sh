@@ -1,15 +1,11 @@
-# time_zsh load time
-alias time_zsh='time zsh -i -c exit'
-
 # Use colors in coreutils utilities output
-alias ls='ls --color=auto'
+alias ls='ls --color=auto --group-directories-first'
 alias grep='grep --color'
-alias rg='rg --smart-case'
 
 # ls aliases
-alias ll='ls -lah'
-alias la='ls -A'
-alias l='ls --color=auto'
+alias ll='ls -lah --group-directories-first'
+alias la='ls -A --group-directories-first'
+alias l='ls --color=auto --group-directories-first'
 
 # display the ten newest files
 alias lsnew="ls -rl *(D.om[1,10])"
@@ -25,11 +21,11 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-# Open a Finder window in your current directory
-alias f='open -a Finder ./'
+# alias for clear screen
+alias c='clear'
 
-# zoxide alias
-alias j='z'
+# alias for disk utility
+alias du='du -h --max-depth=1'
 
 # Update dotfiles
 dfu() {
@@ -39,17 +35,17 @@ dfu() {
 }
 
 # Use pip without requiring virtualenv
-syspip() {
-    PIP_REQUIRE_VIRTUALENV="" pip "$@"
-}
-
-syspip2() {
-    PIP_REQUIRE_VIRTUALENV="" pip2 "$@"
-}
-
-syspip3() {
-    PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
-}
+# syspip() {
+#     PIP_REQUIRE_VIRTUALENV="" pip "$@"
+# }
+#
+# syspip2() {
+#     PIP_REQUIRE_VIRTUALENV="" pip2 "$@"
+# }
+#
+# syspip3() {
+#     PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
+# }
 
 # cd to git root directory
 alias cdgr='cd "$(git root)"'
@@ -147,7 +143,7 @@ alias peek='tee >(cat 1>&2)'
 # git alias
 alias g='git'
 alias gph='git push'
-alias gpl='git pull'
+alias gpl='git pull --rebase'
 alias gm='git merge'
 alias gcm='git checkout main'
 alias gs='git status -sb'
