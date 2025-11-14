@@ -30,7 +30,7 @@ alias du='du -h --max-depth=1'
 # Update dotfiles
 dfu() {
     (
-        cd ~/.dotfiles && git pull --ff-only && ./install -q
+        cd ~/.dotfiles && git pull --ff-only && ./install
     )
 }
 
