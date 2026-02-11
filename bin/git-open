@@ -24,9 +24,11 @@ if [[ $url == *github.com* ]]; then
     if [[ -n "$SSH_CLIENT" || -n "$SSH_TTY" ]]; then
         echo "Remote session detected. Click to open:"
         echo -e "\033[4;34m$url\033[0m" # Prints underlined and blue for visibility
+        exit 0
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         # macos based
         open "$url"
+        exit 0
     elif command -v xdg-open >/dev/null; then
         # linux based
         xdg-open "$url"
