@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# Get the remote URL (Git handles finding the root automatically)
+url=$(git remote get-url origin 2>/dev/null | tr -d '[:space:]')
+
+# Check if we are actually in a Git repo
+if [ -z "$url" ]; then
+    echo "Error: Not a git repository (or no 'origin' remote found)."
+    exit 1
+fi
+
+if [[ $url == git@* ]]; then
+    url="${url#git@}"  # Remove git@
+    url="${url/://}"   # Replace : with / (Fixed: no backslash needed)
+    url="https://$url" # Add protocol
+fi
+
+# Remove .git suffix (ensures clean URL for browser)
+url="${url%.git}"
+
+echo "$url"
+# Open the URL
+if [[ $url == *github.com* ]]; then
+    if [[ -n "$SSH_CLIENT" || -n "$SSH_TTY" ]]; then
+        echo "Remote session detected. Click to open:"
+        echo -e "\033[4;34m$url\033[0m" # Prints underlined and blue for visibility
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        # macos based
+        open "$url"
+    elif command -v xdg-open >/dev/null; then
+        # linux based
+        xdg-open "$url"
+    else
+        echo "Could not find a command to open the browser. URL: $url"
+    fi
+else
+    echo "This repository is not hosted on GitHub: $url"
+fi

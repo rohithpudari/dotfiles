@@ -1,0 +1,77 @@
+#!/bin/zsh
+
+# Usage: pt find <port> - Echo the PID for the process that is currently
+#   listening on the provided port to STDOUT & echo additional details to STDERR
+# Usage: pt kill <port> - Kill the process that is currently listening on the
+#   provided port
+#
+# Examples:
+#   pt find 3000
+#   pt kill 3000
+
+find_port() {
+  emulate -L zsh
+  local port="$1"
+  local line pid
+
+  line="$(lsof -i -P -n | grep LISTEN | grep ":$port")"
+  pid="$(echo "$line" | awk '{print $2}')"
+
+  # If there's nothing running, exit
+  if [[ -z "$pid" ]]; then
+    echo >&2 "No process found listening on port $port"
+    return 0
+  fi
+
+  # Get detailed process info (output to stderr so it won't be piped along)
+  echo >&2 "Process listening on port $port:"
+  echo >&2 "  PID:      $pid"
+  echo >&2 "  User:     $(ps -p "$pid" -o user= 2>/dev/null)"
+  echo >&2 "  CPU:      $(ps -p "$pid" -o %cpu= 2>/dev/null)%"
+  echo >&2 "  Memory:   $(ps -p "$pid" -o %mem= 2>/dev/null)%"
+  echo >&2 "  Started:  $(ps -p "$pid" -o start= 2>/dev/null)"
+  echo >&2 "  Command:  $(ps -p "$pid" -o args= 2>/dev/null)"
+
+  # Print PID only (pipe-friendly)
+  echo "$pid"
+}
+
+kill_port() {
+  emulate -L zsh
+  local port="$1"
+  local line pid cmd
+
+  line="$(lsof -i -P -n | grep LISTEN | grep ":$port")"
+  pid="$(echo "$line" | awk '{print $2}')"
+
+  # If there's nothing running, exit
+  if [[ -z "$pid" ]]; then
+    echo >&2 "No process found listening on port $port"
+    return 0
+  fi
+
+  # Grab the command before killing
+  cmd="$(ps -p "$pid" -o args= 2>/dev/null)"
+
+  kill -9 "$pid"
+
+  echo "Killed process on port $port:"
+  echo "  PID:     $pid"
+  echo "  Command: $cmd"
+}
+
+case "$1" in
+  find|f)
+    [[ -z "$2" ]] && { echo "Usage: pt find <port>"; exit 1 }
+    find_port "$2"
+    ;;
+  kill|k)
+    [[ -z "$2" ]] && { echo "Usage: pt kill <port>"; exit 1 }
+    kill_port "$2"
+    ;;
+  *)
+    echo "Usage: pt <find|kill> <port>"
+    exit 1
+    ;;
+esac
+
