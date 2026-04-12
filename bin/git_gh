@@ -1,0 +1,9 @@
+# taken from https://codeberg.org/untitaker/dotfiles/src/branch/master/home/.scripts/git_gh
+
+URL=$(git remote -v | grep fetch | sed 's/\(.*github.com\)[:|/]\(.*\).git (fetch)/\2/' | awk '{print "https://github.com/" $1}')
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    open "$URL"
+else
+    xdg-open "$URL"
+fi &> /dev/null
