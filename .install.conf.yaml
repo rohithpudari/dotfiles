@@ -16,11 +16,11 @@
     ~/.gnupg/dirmngr.conf: gnupg/dirmngr.conf
     ~/.gnupg/gpg.conf: gnupg/gpg.conf
     ~/.pythonrc:
-    ~/.screenrc:
     ~/.shell:
     ~/.tmux.conf: tmux/tmux.conf
     ~/.zsh:
     ~/.zshrc:
+    ~/.config/uv/uv.toml: uv.toml
 
 - shell:
     - git submodule sync --recursive
