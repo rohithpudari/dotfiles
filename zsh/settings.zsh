@@ -50,6 +50,8 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 # don't have duplicates in directory stack
 setopt pushd_ignore_dups
+setopt hist_find_no_dups # Don't display duplicates when searching history
+
 
 # Time to wait for additional characters in a sequence
 KEYTIMEOUT=1 # corresponds to 10ms
