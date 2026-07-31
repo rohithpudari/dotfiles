@@ -82,3 +82,6 @@ function conda_mamba_init() {
 # Lazy aliases: running any of these triggers the real init
 alias init_conda='conda_mamba_init && conda "$@"'
 # <<< mamba initialize <<<
+
+# Added by Antigravity IDE
+export PATH="/Users/rohith/.antigravity-ide/antigravity-ide/bin:$PATH"

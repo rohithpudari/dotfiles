@@ -105,24 +105,28 @@ function _pick_python() {
 
 # PROMPT_PYTHON="$(command -v python3 || command -v python2 || command -v python)"
 
-# Host in a deterministically chosen color
-RPR_SHOW_HOST=false # Set to false to disable host in rhs prompt
-function RPR_HOST() {
+function hash_to_color() {
     local colors
     colors=(cyan green yellow red pink)
     #local index=$("$PROMPT_PYTHON" <<EOF
     local index=$("$(_pick_python)" <<EOF
 import hashlib
 
-hash = int(hashlib.sha1('$(machine_name)'.encode('utf8')).hexdigest(), 16)
+hash = int(hashlib.sha1('${1}'.encode('utf8')).hexdigest(), 16)
 index = hash % ${#colors} + 1
 
 print(index)
 EOF
     )
-    local color=$colors[index]
+    echo "$colors[index]"
+}
+
+# Host in a deterministically chosen color
+RPR_SHOW_HOST=true # Set to false to disable host in rhs prompt
+function RPR_HOST() {
     if [[ "${RPR_SHOW_HOST}" == "true" ]]; then
-        echo "%{$fg[$color]%}$(machine_name)%{$reset_color%}"
+        local name="$(machine_name)"
+        echo "%{$fg[$(hash_to_color ${name})]%}${name}%{$reset_color%}"
     fi
 }
 
@@ -140,7 +144,6 @@ function RPR_INFO() {
 
 # Set RHS prompt for git repositories
 DIFF_SYMBOL="-"
-GIT_PROMPT_SYMBOL=""
 GIT_PROMPT_PREFIX="%{$fg[violet]%}%B(%b%{$reset_color%}"
 GIT_PROMPT_SUFFIX="%{$fg[violet]%}%B)%b%{$reset_color%}"
 GIT_PROMPT_AHEAD="%{$fg[teal]%}%B+NUM%b%{$reset_color%}"
@@ -206,7 +209,7 @@ function parse_git_state() {
     GIT_STATE="$GIT_STATE$GIT_DIFF"
 
     if [[ -n $GIT_STATE ]]; then
-    echo "$GIT_PROMPT_PREFIX$GIT_STATE$GIT_PROMPT_SUFFIX"
+        echo "$GIT_STATE "
     fi
 }
 
@@ -216,7 +219,7 @@ function git_prompt_string() {
     if [[ "${RPR_SHOW_GIT}" == "true" ]]; then
         local git_where="$(parse_git_branch)"
         local git_detached="$(parse_git_detached)"
-        [ -n "$git_where" ] && echo " $GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[magenta]%}%B${git_where#(refs/heads/|tags/)}%b$git_detached$GIT_PROMPT_SUFFIX"
+        [ -n "$git_where" ] && echo " $GIT_PROMPT_PREFIX$(parse_git_state)%{$fg[magenta]%}%B${git_where#(refs/heads/|tags/)}%b$git_detached$GIT_PROMPT_SUFFIX"
     fi
 }
 
