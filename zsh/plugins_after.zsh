@@ -8,8 +8,24 @@ _load_syntax_highlighting() {
     if [[ -f ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
         source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+        # add highlights for histignorespace
+        : ${ZSH_HIGHLIGHT_STYLES[histignorespace]:=bg=red}
+
+        _zsh_highlight_highlighter_histignorespace_predicate() {
+            [[ ${zsyh_user_options[histignorespace]:-off} == on ]] &&
+            _zsh_highlight_buffer_modified
+        }
+
+    _zsh_highlight_highlighter_histignorespace_paint() {
+        [[ $BUFFER[1] == ' ' ]] || return
+        integer end=1
+        while [[ $BUFFER[end] == ' ' ]]; do
+            (( end++ ))
+        done
+        _zsh_highlight_add_highlight 0 $((end - 1)) histignorespace
+    }
         # Configure highlighters after loading
-        ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
+        ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor histignorespace)
 
         # Performance optimizations
         ZSH_HIGHLIGHT_MAXLENGTH=256  # Shorter limit for better performance

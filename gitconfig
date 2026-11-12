@@ -56,7 +56,7 @@
 	update-submodules = submodule update --init --recursive
 	upgrade-submodules = submodule update --init --remote
 	root = rev-parse --show-toplevel
-	delete-local-merged = "!git fetch && git branch --merged | egrep -v 'main' | xargs git branch -d"b 
+	delete-local-merged = "!git fetch && git branch --merged | egrep -v 'main' | xargs git branch -d" 
 	tar = ! "tar() { git archive --format tar --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; tar"
 	zip = ! "zip() { git archive --format zip --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; zip"
 	fuckedup = ! "fup() { git reset --hard && git clean -df;}; fup"
@@ -65,6 +65,7 @@
 	defaultBranch = main
 
 [diff]
+    algorithm = histogram
 	mnemonicPrefix = true
 	wordRegex = "[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+"
 	compactionHeuristic = true
@@ -90,7 +91,8 @@
 
 [merge]
 	defaultToUpstream = true
-	tool = vimdiff
+	tool = nvimdiff
+    conflictStyle = zdiff3
 
 [pull]
 	ff = only
@@ -116,6 +118,8 @@
 [user]
 	useConfigOnly = true
 	signingkey = 0x6811B6CD9AFC722A
+	name = Rohith Pudari
+	email = 27728974+rohithpudari@users.noreply.github.com
 
 [http]
 	cookieFile = ~/.gitcookies
@@ -137,4 +141,4 @@
 
 # Allow local customizations in the .gitconfig_local file
 [include]
-	path = ~/.git/gitconfig_local
+	path = ~/.gitconfig_local

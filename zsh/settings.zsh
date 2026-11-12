@@ -44,6 +44,7 @@ SAVEHIST=$HISTSIZE
 setopt appendhistory
 setopt incappendhistory
 setopt extendedhistory
+setopt histignorespace
 HISTCONTROL=ignoreboth # consecutive duplicates & commands starting with space are not saved
 # remove duplicates from history
 setopt HIST_IGNORE_DUPS
@@ -71,8 +72,12 @@ bindkey -a '^V' edit-command-line
 
 # Backspace
 bindkey '^?' backward-delete-char
+# delete: delete char under cursor
+bindkey '^[[3~' delete-char
 # Alt+Backspace binding as delete word
 bindkey '^[^?' backward-kill-word
+# Alt+Delete binding as forward delete word
+bindkey '^[d' kill-word
 
 # ctrl + r for fzf history search
 bindkey '^R' fzf-history-widget
